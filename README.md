@@ -4,9 +4,10 @@ A **Streamlit-based** custom email sender application using the OpenAI API for c
 
 ---
 
-### Framework Used
+## Framework Used
 
 This application is built using **Streamlit**, a Python-based open-source framework for creating interactive web applications. Streamlit enables rapid prototyping and seamless integration of APIs, making it ideal for building data-driven dashboards and applications with minimal code.
+
 ---
 
 ## Features
@@ -55,5 +56,3 @@ This application is built using **Streamlit**, a Python-based open-source framew
 4. Upload a CSV file with recipient details (e.g., **Name**, **Email**, **Company**).
 5. Enter an email template with placeholders (e.g.,`Hello **{{Name}}**, from **{{Company}}**.`).
 6. Preview and send emails or schedule them.
-
----
