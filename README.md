@@ -56,12 +56,9 @@ This application is built using **Streamlit**, a Python-based open-source framew
 1. Initialization by giving details
 ![Screenshot 2024-11-16 233044](https://github.com/user-attachments/assets/3e05a569-b2ca-4d6a-8847-8774714b6718)
 
-2. Uploading and giving details for submitting email
-![Screenshot 2024-11-16 233212](https://github.com/user-attachments/assets/b05ca4a9-72b8-4d72-ae69-239ca2e6a246)
-
-3. Scheduling or Throttling up Emails
+2. Scheduling or Throttling up Emails
 ![Screenshot 2024-11-16 233310](https://github.com/user-attachments/assets/33c393b2-499f-4fef-879d-cc7be32fcf8b)
 
-4. Real-Time Dashboard for Emails
+3. Real-Time Dashboard for Emails
 ![Screenshot 2024-11-16 233323](https://github.com/user-attachments/assets/3ef6082e-8660-4460-bbc0-afc72596aaac)
 
