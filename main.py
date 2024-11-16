@@ -84,9 +84,11 @@ if uploaded_file:
                         temperature=0.7
                     )
                     generated_message = response.choices[0].message['content'].strip()
+                    st.session_state.generated_message = generated_message  # Store in session state
                     message_body = generated_message  # Update message body with the generated response
                     st.success("Generated email body using OpenAI")
-                    st.text_area("Generated Email Body", value=generated_message, height=200)
+                    st.text_area("Generated Email Body", value=generated_message, height=100)
+
                 except Exception as e:
                     st.error(f"Error generating email body with OpenAI: {e}")
             else:
