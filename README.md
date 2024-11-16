@@ -50,3 +50,11 @@ This application is built using **Streamlit**, a Python-based open-source framew
 4. Upload a CSV file with recipient details (e.g., **Name**, **Email**, **Company**).
 5. Enter an email template with placeholders (e.g.,`Hello **{{Name}}**, from **{{Company}}**.`).
 6. Preview and send emails or schedule them.
+
+
+## Output
+
+![Screenshot 2024-11-16 233044](https://github.com/user-attachments/assets/3e05a569-b2ca-4d6a-8847-8774714b6718)
+![Screenshot 2024-11-16 233212](https://github.com/user-attachments/assets/b05ca4a9-72b8-4d72-ae69-239ca2e6a246)
+![Screenshot 2024-11-16 233310](https://github.com/user-attachments/assets/33c393b2-499f-4fef-879d-cc7be32fcf8b)
+![Screenshot 2024-11-16 233323](https://github.com/user-attachments/assets/3ef6082e-8660-4460-bbc0-afc72596aaac)
