@@ -15,14 +15,12 @@ This application is built using **Streamlit**, a Python-based open-source framew
 - **Data Handling**: Upload CSV files for recipient data.
 - **Real-Time Dashboard**: Track email sending status, delivery, and analytics.
 
-
 ## Prerequisites
 
 - **Python 3.9+**
 - API keys for:
   - [OpenAI](https://platform.openai.com/signup/)
   - [Mailjet](https://www.mailjet.com/)
-
 
 ## Installation
 
