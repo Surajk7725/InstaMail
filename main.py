@@ -10,12 +10,7 @@ import json
 import uuid
 import os
 import pyperclip  # To copy content to clipboard
-import threading
-from track import run_webhook_server, opened_emails
-
-thread = threading.Thread(target=run_webhook_server)
-thread.daemon = True
-thread.start()
+from track import opened_emails
 
 # Sidebar: Page Navigation
 st.title("Custom Email Sender Application")
@@ -51,11 +46,6 @@ def load_data(uploaded_file):
     except Exception as e:
         st.error(f"Error loading file: {e}")
         return None
-
-# Initialize session state for email statuses
-if "email_statuses" not in st.session_state:
-    st.session_state["email_statuses"] = []
-
 
 # Main Screen: Display the uploaded file content
 if uploaded_file:
@@ -134,6 +124,10 @@ if uploaded_file:
         emails_failed = 0
         response_rate = 0  # Placeholder, requires tracking
         email_statuses = []
+
+        # Initialize session state for email statuses
+        if "email_statuses" not in st.session_state:
+            st.session_state["email_statuses"] = []
 
         # Schedule Email Sending Section
         with col1:
