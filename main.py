@@ -10,6 +10,12 @@ import json
 import uuid
 import os
 import pyperclip  # To copy content to clipboard
+import threading
+from track import run_webhook_server, opened_emails
+
+thread = threading.Thread(target=run_webhook_server)
+thread.daemon = True
+thread.start()
 
 # Sidebar: Page Navigation
 st.title("Custom Email Sender Application")
@@ -190,7 +196,8 @@ if uploaded_file:
                                             ],
                                             "Subject": personalized_subject,
                                             "HTMLPart": personalized_message,
-                                            "Attachments": []
+                                            "Attachments": [],
+                                            "TrackOpens": "enabled"
                                         }
                                     ]
                                 }
@@ -280,7 +287,8 @@ if uploaded_file:
                                     ],
                                     "Subject": personalized_subject,
                                     "HTMLPart": personalized_message,
-                                    "Attachments": []
+                                    "Attachments": [],
+                                    "TrackOpens": "enabled"
                                     }
                                 ]
                             }
@@ -350,29 +358,24 @@ if uploaded_file:
 
         if st.button("Refresh Dashboard"):
             try:
-                response = requests.get("http://127.0.0.1:5001/opened-status")
-                if response.status_code == 200:
-                    opened_status = response.json()
+                # Sync opened emails with the dashboard
+                for status in st.session_state["email_statuses"]:
+                    if status[1] in opened_emails:
+                        status[4] = "Yes"  # Mark as opened
+                    else:
+                        status[4] = "No"  # If not opened, keep it as "No"
 
-                    # Update session state
-                    for status in st.session_state["email_statuses"]:
-                        if status[1] in opened_status and opened_status[status[1]] == "Yes":
-                            status[4] = "Yes"  # Mark the email as opened
-                        else:
-                            status[4] = "No"  # If not opened, keep it as "No"
-                else:
-                    st.error(f"Failed to fetch opened statuses: {response.status_code}")
+                # Refresh the dashboard
+                dashboard_df = pd.DataFrame(
+                    st.session_state["email_statuses"],
+                    columns=["Company Name", "Email", "Status", "Delivery Status", "Opened"],
+                )
+                st.table(dashboard_df)
+
             except Exception as e:
-                st.error(f"Error fetching opened statuses: {e}")
-
-
-        # Display the Real-Time Dashboard
-        dashboard_df = pd.DataFrame(
-            st.session_state["email_statuses"],
-            columns=["Company Name", "Email", "Status", "Delivery Status", "Opened"],
-        )
-        st.table(dashboard_df)
+                st.error(f"Error refreshing dashboard: {e}")
 
     else:
         st.error("No valid data found in the uploaded file.")
+
 
